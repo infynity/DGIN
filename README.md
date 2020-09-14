@@ -162,38 +162,29 @@ header:403 Forbidden
 {
   "code": 1,
   "Msg": {
-    "code": 1,
-    "Msg": {
-      "Id": 10,
-      "content": "啊实打实的按时打算",
-      "Replys": [
-        {
-          "Id": 1,
-          "reply": "teshreply",
-          "lawyer_id": 1233,
-          "created_at": "2020-09-14T14:47:10+08:00"
-        },
-        {
-          "Id": 2,
-          "reply": "tesh123reply",
-          "lawyer_id": 1233,
-          "created_at": "2020-09-14T14:47:15+08:00"
-        },
-        {
-          "Id": 3,
-          "reply": "tesh123reply",
-          "lawyer_id": 1233,
-          "created_at": "2020-09-14T14:48:16+08:00"
-        },
-        {
-          "Id": 4,
-          "reply": "tesh123reply",
-          "lawyer_id": 1233,
-          "created_at": "2020-09-14T15:12:37+08:00"
-        }
-      ],
-      "created_at": "2020-09-14T14:34:22+08:00"
-    }
+    "Id": 10,
+    "content": "啊实打实的按时打算",
+    "Replys": [
+      {
+        "Id": 1,
+        "reply": "teshreply",
+        "lawyer_id": 1233,
+        "created_at": "2020-09-14T14:47:10+08:00"
+      },
+      {
+        "Id": 2,
+        "reply": "tesh123reply",
+        "lawyer_id": 1233,
+        "created_at": "2020-09-14T14:47:15+08:00"
+      },
+      {
+        "Id": 3,
+        "reply": "tesh123reply",
+        "lawyer_id": 1233,
+        "created_at": "2020-09-14T14:48:16+08:00"
+      }
+    ],
+    "created_at": "2020-09-14T14:34:22+08:00"
   }
 }
 ```
