@@ -118,10 +118,10 @@ header:403 Forbidden
 {
 	"code": 1,
 	"Msg": {
-		"Id": 12,
-		"reply": "ceshidata",
-		"lawyer_id": 1233,
-		"created_at": "2020-09-14T17:24:14.260772+08:00"
+		"Id": 12,//回复id
+		"reply": "ceshidata",//咨询的内容
+		"lawyer_id": 1233,//回复的律师id
+		"created_at": "2020-09-14T17:24:14.260772+08:00"//回复时间
 	}
 }
 ```
@@ -162,14 +162,14 @@ header:403 Forbidden
 {
   "code": 1,
   "Msg": {
-    "Id": 10,
-    "content": "啊实打实的按时打算",
-    "Replys": [
+    "Id": 10, //咨询id
+    "content": "啊实打实的按时打算", //咨询内容
+    "Replys": [ //该咨询关联的回复
       {
-        "Id": 1,
-        "reply": "teshreply",
-        "lawyer_id": 1233,
-        "created_at": "2020-09-14T14:47:10+08:00"
+        "Id": 1,   //回复id
+        "reply": "teshreply", //回复内容
+        "lawyer_id": 1233,  //律师id
+        "created_at": "2020-09-14T14:47:10+08:00"//回复时间
       },
       {
         "Id": 2,
