@@ -1,0 +1,5 @@
+{
+	"Env": "develop",
+	"Port": "8080",
+	"MySqlDsn": "root:wwww@(127.0.0.1:10110)/consult?charset=utf8&parseTime=True&loc=Local"
+}
