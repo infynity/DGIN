@@ -21,11 +21,14 @@ func Init() {
 	r.engine.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "Hello this is consult service!")
 	})
+	//r.engine.Use(middelware.AuthLawyer())
 	r.lawyerGroup = r.engine.Group("/lawyer", middelware.AuthLawyer(), middelware.CheckForbidden())
 	{
 		//回复路由
 		r.lawyerGroup.POST("/reply", controller.Reply)
 	}
+
+	r.engine.Handle("GET","/ask/:id",controller.List)
 
 	//发布路由
 	r.engine.POST("/publish", controller.Publish)

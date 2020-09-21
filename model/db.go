@@ -9,8 +9,12 @@ import (
 
 // DB 实例
 var DB *gorm.DB
+var Logger *log.Logger
 
 func InitDb() {
+	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
+		return "" + defaultTableName
+	}
 	dbConnStr := config.AppConfig.MySqlDsn
 	db, err := gorm.Open("mysql", dbConnStr)
 	if err != nil {
@@ -22,7 +26,8 @@ func InitDb() {
 	if config.AppConfig.Env != "online" {
 		db.LogMode(true)
 	}
-	db = db.Debug()
+	//db = db.Debug()
+
 
 	DB = db
 }

@@ -24,7 +24,7 @@ func Reply(reply *model.Reply) *model.ResultModel {
 
 	ask := model.Ask{}
 
-	if err := model.GetDB().Where("id=?", reply.ConsultId).First(&ask).Error; err != nil {
+	if err := model.GetDB().Where("id=?", reply.AskId).First(&ask).Error; err != nil {
 		if err != gorm.ErrRecordNotFound {
 			return model.Fail("查询失败")
 
@@ -48,9 +48,25 @@ func Reply(reply *model.Reply) *model.ResultModel {
 func List(id int) *model.ResultModel {
 	ask := model.Ask{}
 	//预加载模式一对多关联
+	//
+	//var adminAreaStructs []model.Reply
+	//model.GetDB().Model(&model.Reply{}).Where("id in (?)",[]int{1,2}).Scan(&adminAreaStructs)
+	//model.GetDB().Model(&model.Reply{}).Where("id in (?)",[]int{1,2}).Find(&adminAreaStructs)   //双次前缀
+	//fmt.Println(adminAreaStructs)
+
+
+	//adm:=model.Ask{Id: 1,Content: "bbbbb",Uid: 123}
+	//sd:= model.GetDB().Select("id","content","uid").Save(&adm).Error
+	//fmt.Println(sd,22222)
 	model.GetDB().Preload("Replys").First(&ask, id)
+
+	//err := model.GetDB().Create(&model.Ask{Content: "1234"}).Error
+	//fmt.Println(err)
+	//model.Logger.Println(err)
 	if ask.Id <= 0 {
 		return model.Fail("没有查询到该咨询信息")
 	}
+
+
 	return model.Success(ask)
 }
