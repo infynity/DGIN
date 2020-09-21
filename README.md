@@ -1,6 +1,5 @@
 # Gin&Gorm for web
 
-### 后端培训项目   课程1-2
 ---
 ### 目录结构
 <pre><code>
