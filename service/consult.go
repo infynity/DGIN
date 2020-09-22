@@ -47,6 +47,7 @@ func Reply(reply *model.Reply) *model.ResultModel {
 //查询服务方法
 func List(id int) *model.ResultModel {
 	ask := model.Ask{}
+	//ask := model.Askoutput{}
 	//预加载模式一对多关联
 	//
 	//var adminAreaStructs []model.Reply
@@ -58,7 +59,8 @@ func List(id int) *model.ResultModel {
 	//adm:=model.Ask{Id: 1,Content: "bbbbb",Uid: 123}
 	//sd:= model.GetDB().Select("id","content","uid").Save(&adm).Error
 	//fmt.Println(sd,22222)
-	model.GetDB().Preload("Replys").First(&ask, id)
+	model.GetDB().Model(model.Ask{}).Preload("Replys").First(&ask, id)
+	//model.GetDB().Model(model.Ask{}).Select("id,content,created_at").Where("id=?",id).Preload("Replys").Scan(&ask)
 
 	//err := model.GetDB().Create(&model.Ask{Content: "1234"}).Error
 	//fmt.Println(err)

@@ -13,3 +13,12 @@ type Ask struct {
 //`gorm:"foreignKey:ConsultId"`
 
 type AskLists []*Ask
+
+
+type Askoutput struct {
+	Id		int
+	Content   string    `json:"contentoutstruct"`
+	CreatedAt time.Time `json:"pubtime"`
+	Replys    []Reply
+
+}

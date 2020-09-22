@@ -14,7 +14,7 @@ import (
 func Publish(context *gin.Context) {
 
 	ask := model.Ask{}
-	if err := context.ShouldBind(&ask); err != nil {
+	if err := context.ShouldBindJSON(&ask); err != nil {
 
 		log.Println(err.Error())
 		context.JSON(http.StatusOK, model.Fail("请检查参数"))
