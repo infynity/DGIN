@@ -108,7 +108,7 @@ func InitLog() {
 		zap.Duration("backoff", time.Second),
 	)
 	//hex
-	fmt.Println(0x8400, 19191919, 0x8, 0x9, 0x10, 0xa, 0xB)
+	fmt.Println(0x8400, 19191919, 0x8, 0x9, 0x10, 0xa, 0xB,0xe,0xf)
 	if AppConfig.Env == "online" {
 		//使用daily加入日期
 		f, _ := os.Create(fmt.Sprintf("gin_%s.log", time.Now().Format("2006-01-02")))
