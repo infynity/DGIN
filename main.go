@@ -12,6 +12,7 @@ import (
 	"log"
 	"os"
 	"reflect"
+	"sync/atomic"
 	"time"
 )
 
@@ -28,15 +29,47 @@ type abc struct {
 func (thi *abc) sad(config *ClockSyncConfig) {
 	config.SyncScript = "ooopasdppp"
 }
-
+func readIndex() int {
+	if len(slc) == 0 {
+		return 0
+	}
+	v := atomic.AddInt64(&idx, 1)
+	fmt.Println("readidx=",v)
+	return int(v) % len(slc)
+}
+var slc []string
+var idx  int64
 func main() {
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(hostname)
+
+	slc=[]string{"a","b","d","f"}
+	for i,v:=range slc{
+		fmt.Println(i,v)
+	}
+	idx := readIndex()
+	for i := range slc{
+		fmt.Println("the i =",i)
+		fmt.Println("(idx+i)%len(db.read)=",(idx+i)%len(slc))
+	}
+
+	idx = readIndex()
+	for i := range slc{
+		fmt.Println("the i =",i)
+		fmt.Println("(idx+i)%len(db.read)=",(idx+i)%len(slc))
+	}
+	return
+
 
 	s1 := "{\n\"sync_switch\":1,\"sync_period\":[1,7,30],\"checked_period\":1,\"sync_script\":\"echo %s\",\"ntp_server\":\"\"}"
 
 	s2 := "{\n\"sync_script\":\"echo %s\",\"sync_switch\":2,\"sync_period\":[1,7,30],\"checked_period\":1,\"ntp_server\":\"\"}"
 	cc := ClockSyncConfig{}
 	cc2 := ClockSyncConfig{}
-	err := json.Unmarshal([]byte(s1), &cc)
+	err= json.Unmarshal([]byte(s1), &cc)
 	er2 := json.Unmarshal([]byte(s2), &cc2)
 	fmt.Println(err, cc, cc2, er2)
 	fmt.Println(reflect.DeepEqual(cc, cc2), 3333333)
